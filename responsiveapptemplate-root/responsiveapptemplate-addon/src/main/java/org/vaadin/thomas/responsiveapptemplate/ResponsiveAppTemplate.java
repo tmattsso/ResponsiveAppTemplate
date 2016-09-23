@@ -1,5 +1,7 @@
 package org.vaadin.thomas.responsiveapptemplate;
 
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Resource;
 import com.vaadin.server.Responsive;
@@ -63,6 +65,10 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 	private Component menuComponent;
 	private final HorizontalLayout menuTitleLayout;
 
+	private MenuClickHandler handler;
+
+	private MenuClickHandler titleBarClickListener;
+
 	/**
 	 * Constructor for creating a SideMenu component. This method sets up all
 	 * the components and styles needed for the side menu.
@@ -88,6 +94,15 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 		menuTitleLayout.setComponentAlignment(menuCaption,
 				Alignment.MIDDLE_CENTER);
 		menuTitleLayout.addStyleName("valo-menu-title");
+		menuTitleLayout.addLayoutClickListener(new LayoutClickListener() {
+
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				if (titleBarClickListener != null) {
+					titleBarClickListener.click();
+				}
+			}
+		});
 		menuArea.addComponent(menuTitleLayout);
 
 		userMenu.addStyleName("user-menu");
@@ -304,6 +319,16 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 	 */
 	public Component getMenuCaption() {
 		return menuCaption;
+	}
+
+	public void setMenuCaptionClickHandler(MenuClickHandler handler) {
+		titleBarClickListener = handler;
+
+		if (handler == null) {
+			menuTitleLayout.removeStyleName("cursor");
+		} else {
+			menuTitleLayout.addStyleName("cursor");
+		}
 	}
 
 	/**

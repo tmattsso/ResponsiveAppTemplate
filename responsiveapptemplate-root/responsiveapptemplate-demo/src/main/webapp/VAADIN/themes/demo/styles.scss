@@ -97,6 +97,10 @@ $valo-menu-badge-color: $vaadin-blue;
 			    padding-right: 10px;
 			    font-size: 16pt;
 			}
+			
+			&.cursor {
+				cursor: pointer;
+			}
 		}
 	
 		.v-menubar-menuitem-useritem .v-icon {

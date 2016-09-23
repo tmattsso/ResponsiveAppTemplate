@@ -61,6 +61,14 @@ public class DemoUI extends UI {
 		sideMenu.addNavigation("Initial View", "");
 		sideMenu.addNavigation("Foo View", FontAwesome.AMBULANCE, "Foo");
 
+		sideMenu.setMenuCaptionClickHandler(new MenuClickHandler() {
+
+			@Override
+			public void click() {
+				Notification.show("Clicked");
+			}
+		});
+
 		// Arbitrary method execution
 		final ResponsiveMenuItem item2 = sideMenu.addMenuItem("My Menu Entry",
 				new MenuClickHandler() {
