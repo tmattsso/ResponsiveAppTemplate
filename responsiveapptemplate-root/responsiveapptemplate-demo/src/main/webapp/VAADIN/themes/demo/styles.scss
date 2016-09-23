@@ -81,8 +81,18 @@ $darkgreen: darken($green, 30%);
 		.v-menubar-menuitem-useritem .v-icon {
 			font-size: 24pt;
 		}
-
 	}
 
-	
+	// Fixes alignment of icons for menu items in the popup
+	.v-menubar-popup {
+		.v-menubar-submenu-user-menu {
+			.v-menubar-menuitem {
+				padding-left: 26pt;
+				.v-icon {
+					margin-left: -24px;
+					padding-right: 4px;
+				}
+			}
+		}
+	}
 }

@@ -60,9 +60,7 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 
 	/* Caption component for the whole menu */
 	private final Label menuCaption;
-
 	private Component menuComponent;
-
 	private final HorizontalLayout menuTitleLayout;
 
 	/**
