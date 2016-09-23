@@ -1,9 +1,15 @@
 @import "../valo/valo.scss";
 @import "addons.scss";
 
-$gray: #d1d1cf;
-$green: #40b527;
-$darkgreen: darken($green, 30%);
+$vaadin-blue: #00b4f0;
+$vaadin-pink: #e61e6d;
+$vaadin-gray: #33383a;
+$vaadin-white: #e5e8e8;
+
+
+$valo-menu-title-background-color: $vaadin-blue;
+$valo-menu-background-color: $vaadin-gray;
+$valo-menu-badge-color: $vaadin-blue;
 
 .demo {
 
@@ -12,29 +18,6 @@ $darkgreen: darken($green, 30%);
 	// Include addons
 	@include addons;
 
-	// You can style your demo app right here
-	.demoContentLayout {
-		background-color: $gray;
-		background-image: url(images/radial-gradient.png);
-		background-size: 90%;
-		background-position: center center;
-		background-repeat: no-repeat;
-	}
-	
-	// You can also customize your component for the demo
-	// app, but remember that these styles are not part of
-	// the component. To include built-in CSS for your component,
-	// edit client/styles.css under java sources
-	div.responsiveapptemplate {
-		color: $green;
-		font-size: 50pt;
-		font-weight: bold;
-		text-shadow: 0px 3px 0px $darkgreen,
-             0px 14px 10px rgba(0,0,0,0.15),
-             0px 24px 2px rgba(0,0,0,0.1),
-             0px 34px 30px rgba(0,0,0,0.1);
-        text-align: center;
-	}
 	
 	.valo-menu-responsive[width-range~="0px-800px"] {
 	
@@ -70,6 +53,9 @@ $darkgreen: darken($green, 30%);
 	.valo-menu-responsive {
 	
 		.valo-menu-title {
+		
+			@include valo-gradient($color: $valo-menu-title-background-color);
+		
 			.v-caption-menucaption {
 				display: inline;
 			    line-height: 18px;
@@ -80,6 +66,15 @@ $darkgreen: darken($green, 30%);
 	
 		.v-menubar-menuitem-useritem .v-icon {
 			font-size: 24pt;
+		}
+		
+		.valo-menu-item {
+		
+			span.badge {
+				position: absolute;
+				right: 10px;
+				color: $valo-menu-badge-color;
+			}
 		}
 	}
 

@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 
 import org.vaadin.thomas.responsiveapptemplate.ResponsiveAppTemplate;
 import org.vaadin.thomas.responsiveapptemplate.ResponsiveAppTemplate.MenuClickHandler;
+import org.vaadin.thomas.responsiveapptemplate.ResponsiveMenuItem;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
@@ -61,16 +62,19 @@ public class DemoUI extends UI {
 		sideMenu.addNavigation("Foo View", FontAwesome.AMBULANCE, "Foo");
 
 		// Arbitrary method execution
-		sideMenu.addMenuItem("My Menu Entry", new MenuClickHandler() {
-			@Override
-			public void click() {
-				final VerticalLayout content = new VerticalLayout();
-				content.addComponent(new Label("A layout"));
-				sideMenu.setContent(content);
-			}
-		});
-		sideMenu.addMenuItem("Entry With Icon", FontAwesome.ANDROID,
+		final ResponsiveMenuItem item2 = sideMenu.addMenuItem("My Menu Entry",
 				new MenuClickHandler() {
+					@Override
+					public void click() {
+						final VerticalLayout content = new VerticalLayout();
+						content.addComponent(new Label("A layout"));
+						sideMenu.setContent(content);
+					}
+				});
+		item2.setBadgeText("123", "#e61e6d");
+
+		final ResponsiveMenuItem item = sideMenu.addMenuItem("Entry With Icon",
+				FontAwesome.ANDROID, new MenuClickHandler() {
 					@Override
 					public void click() {
 						final VerticalLayout content = new VerticalLayout();
@@ -78,6 +82,8 @@ public class DemoUI extends UI {
 						sideMenu.setContent(content);
 					}
 				});
+
+		item.setBadgeText("42");
 
 		// User menu controls
 		sideMenu.addMenuItem("Show/Hide user menu", FontAwesome.USER,

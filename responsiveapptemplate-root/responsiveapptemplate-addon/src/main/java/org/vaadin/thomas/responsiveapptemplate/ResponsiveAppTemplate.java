@@ -134,8 +134,8 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 	 * @param handler
 	 *            menu click handler
 	 */
-	public void addMenuItem(String text, MenuClickHandler handler) {
-		addMenuItem(text, null, handler);
+	public ResponsiveMenuItem addMenuItem(String text, MenuClickHandler handler) {
+		return addMenuItem(text, null, handler);
 	}
 
 	/**
@@ -149,19 +149,22 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 	 * @param handler
 	 *            menu click handler
 	 */
-	public void addMenuItem(String text, Resource icon,
+	public ResponsiveMenuItem addMenuItem(String text, Resource icon,
 			final MenuClickHandler handler) {
-		final Button button = new Button(text, new ClickListener() {
+		final ResponsiveMenuItem button = new ResponsiveMenuItem(text,
+				new ClickListener() {
 
-			@Override
-			public void buttonClick(ClickEvent event) {
-				handler.click();
-				menuArea.removeStyleName(STYLE_VISIBLE);
-			}
-		});
+					@Override
+					public void buttonClick(ClickEvent event) {
+						handler.click();
+						menuArea.removeStyleName(STYLE_VISIBLE);
+					}
+				});
 		button.setIcon(icon);
 		button.setPrimaryStyleName("valo-menu-item");
 		menuItemsLayout.addComponent(button);
+
+		return button;
 	}
 
 	/**
@@ -295,6 +298,15 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 	}
 
 	/**
+	 * @return the Component set with {@link #setMenuCaption(Component)} or
+	 *         <code>null</code> if not set.
+	 * @see #setMenuCaption(String)
+	 */
+	public Component getMenuCaption() {
+		return menuCaption;
+	}
+
+	/**
 	 * Removes all content from the user drop down menu.
 	 */
 	public void clearUserMenu() {
@@ -309,8 +321,8 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 	 * @param navigationState
 	 *            state to navigate to
 	 */
-	public void addNavigation(String text, String navigationState) {
-		addNavigation(text, null, navigationState);
+	public ResponsiveMenuItem addNavigation(String text, String navigationState) {
+		return addNavigation(text, null, navigationState);
 	}
 
 	/**
@@ -323,9 +335,9 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 	 * @param navigationState
 	 *            state to navigate to
 	 */
-	public void addNavigation(String text, Resource icon,
+	public ResponsiveMenuItem addNavigation(String text, Resource icon,
 			final String navigationState) {
-		addMenuItem(text, icon, new MenuClickHandler() {
+		return addMenuItem(text, icon, new MenuClickHandler() {
 
 			@Override
 			public void click() {
