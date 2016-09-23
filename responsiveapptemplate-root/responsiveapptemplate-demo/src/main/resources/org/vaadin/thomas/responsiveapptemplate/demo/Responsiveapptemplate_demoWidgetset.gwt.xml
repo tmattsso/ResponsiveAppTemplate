@@ -9,5 +9,5 @@
 
     <inherits name="org.vaadin.thomas.responsiveapptemplate.WidgetSet" />
 
-    <inherits name="com.vaadin.addon.spreadsheet.Widgetset" />
+    
 </module>

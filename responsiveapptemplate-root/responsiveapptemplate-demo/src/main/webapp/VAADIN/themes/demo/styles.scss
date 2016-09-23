@@ -93,6 +93,14 @@ $v-background-color: $vaadin-white;
 					padding-top: 3px;
 				}
 			}
+			
+			.valo-menu-item {
+		
+				// align icons
+				.v-icon {
+					position: initial;
+				}
+			}
 		}
 	}
 	
@@ -121,6 +129,16 @@ $v-background-color: $vaadin-white;
 		}
 		
 		.valo-menu-item {
+				
+			padding-top: 6px;
+		
+			// align icons
+			.v-icon {
+				position: absolute;
+			}
+			.valo-menu-item-caption {
+				padding-left: 28px;
+			}
 		
 			span.badge {
 				position: absolute;
