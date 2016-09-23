@@ -4,13 +4,15 @@
 $vaadin-blue: #00b4f0;
 $vaadin-pink: #e61e6d;
 $vaadin-gray: #33383a;
-$vaadin-white: #e5e8e8;
+$vaadin-white: #ffffff;
 
 
 $valo-menu-title-background-color: $vaadin-blue;
 $valo-menu-title-text-color: white;
 $valo-menu-background-color: $vaadin-gray;
 $valo-menu-badge-color: $vaadin-blue;
+
+$v-background-color: $vaadin-white;
 
 .demo {
 
@@ -19,7 +21,17 @@ $valo-menu-badge-color: $vaadin-blue;
 	// Include addons
 	@include addons;
 
+
+	&.v-app {
+		background-color: $v-background-color;
+	}
 	
+	.valo-menu {
+		border-right: none;
+	}
+	
+	
+	// *** COPY TO ADDON *** //
 	.valo-menu-responsive[width-range~="0px-800px"] {
 	
 		.valo-menu-part {
@@ -49,6 +61,7 @@ $valo-menu-badge-color: $vaadin-blue;
 				
 					.v-icon {
 						font-size:14pt;
+						margin-left: 8px;
 					}
 				}
 				

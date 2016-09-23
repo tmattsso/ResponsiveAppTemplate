@@ -65,8 +65,6 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 	private Component menuComponent;
 	private final HorizontalLayout menuTitleLayout;
 
-	private MenuClickHandler handler;
-
 	private MenuClickHandler titleBarClickListener;
 
 	/**
@@ -321,6 +319,11 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 		return menuCaption;
 	}
 
+	/**
+	 * Adds a handler for when user clicks on the title area.
+	 *
+	 * @param handler
+	 */
 	public void setMenuCaptionClickHandler(MenuClickHandler handler) {
 		titleBarClickListener = handler;
 

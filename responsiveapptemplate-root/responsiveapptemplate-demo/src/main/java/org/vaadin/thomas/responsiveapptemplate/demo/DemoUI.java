@@ -29,6 +29,7 @@ public class DemoUI extends UI {
 	private final class FooView extends VerticalLayout implements View {
 
 		public FooView(String text) {
+			setMargin(true);
 			addComponent(new Label(text));
 		}
 
@@ -75,6 +76,7 @@ public class DemoUI extends UI {
 					@Override
 					public void click() {
 						final VerticalLayout content = new VerticalLayout();
+						content.setMargin(true);
 						content.addComponent(new Label("A layout"));
 						sideMenu.setContent(content);
 					}
@@ -86,6 +88,7 @@ public class DemoUI extends UI {
 					@Override
 					public void click() {
 						final VerticalLayout content = new VerticalLayout();
+						content.setMargin(true);
 						content.addComponent(new Label("Another layout"));
 						sideMenu.setContent(content);
 					}
