@@ -8,6 +8,7 @@ $vaadin-white: #e5e8e8;
 
 
 $valo-menu-title-background-color: $vaadin-blue;
+$valo-menu-title-text-color: white;
 $valo-menu-background-color: $vaadin-gray;
 $valo-menu-badge-color: $vaadin-blue;
 
@@ -21,31 +22,63 @@ $valo-menu-badge-color: $vaadin-blue;
 	
 	.valo-menu-responsive[width-range~="0px-800px"] {
 	
-		.valo-menu-part .valo-menu-title {
-			.v-caption-menucaption {
-			    font-size: 12pt;
-			    line-height: 12px;
+		.valo-menu-part {
+			.valo-menu-title {
+				.v-caption-menucaption {
+				    font-size: 12pt;
+				    line-height: 12px;
+				}
+			}
+						
+			.valo-menu-toggle {
+				color: $valo-menu-title-text-color;
+				
+				&:focus:after {
+					box-shadow: none;
+				}
+			}
+			
+			.user-menu {
+				color: $valo-menu-title-text-color;
+				
+				.v-menubar-menuitem-caption {
+					
+					&:after {
+						opacity: 0.8;
+					}
+				
+					.v-icon {
+						font-size:14pt;
+					}
+				}
+				
+				.v-menubar-menuitem-useritem:hover {
+					color: darken($valo-menu-title-text-color, 10%);
+				}
 			}
 		}
 	}
 	
 	.valo-menu-responsive[width-range~="801px-1100px"] {
 	
-		.valo-menu-part .valo-menu-title {
-			.v-caption-menucaption {
-			    font-size: 20pt;
-			    margin-left: auto;
-			    margin-right: auto;
-			    padding: 0;
-			    
-			    span {
-			    	width:100%;
-			    }
-			}
-			.v-label-menucaption {
-				display: block;
-				white-space: nowrap;
-				padding-top: 3px;
+		.valo-menu-part {
+		
+			.valo-menu-title {
+				.v-caption-menucaption {
+				    font-size: 20pt;
+				    margin-left: auto;
+				    margin-right: auto;
+				    padding: 0;
+				    
+				    span {
+				    	width:100%;
+				    }
+				}
+				.v-label-menucaption {
+					display: block;
+					white-space: nowrap;
+					padding-top: 3px;
+				}
 			}
 		}
 	}
@@ -53,6 +86,8 @@ $valo-menu-badge-color: $vaadin-blue;
 	.valo-menu-responsive {
 	
 		.valo-menu-title {
+		
+			color: $valo-menu-title-text-color;
 		
 			@include valo-gradient($color: $valo-menu-title-background-color);
 		
