@@ -52,6 +52,9 @@ public class DemoUI extends UI {
 		navigator.addView("Foo", new FooView("Foo!"));
 
 		sideMenu.setMenuCaption("My App Menu");
+		sideMenu.setMenuCaptionIcon(FontAwesome.FACEBOOK);
+
+		// sideMenu.setMenuCaption(new Button("Custom menu!"));
 
 		// Navigation examples
 		sideMenu.addNavigation("Initial View", "");

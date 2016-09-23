@@ -35,4 +35,54 @@ $darkgreen: darken($green, 30%);
              0px 34px 30px rgba(0,0,0,0.1);
         text-align: center;
 	}
+	
+	.valo-menu-responsive[width-range~="0px-800px"] {
+	
+		.valo-menu-part .valo-menu-title {
+			.v-caption-menucaption {
+			    font-size: 12pt;
+			    line-height: 12px;
+			}
+		}
+	}
+	
+	.valo-menu-responsive[width-range~="801px-1100px"] {
+	
+		.valo-menu-part .valo-menu-title {
+			.v-caption-menucaption {
+			    font-size: 20pt;
+			    margin-left: auto;
+			    margin-right: auto;
+			    padding: 0;
+			    
+			    span {
+			    	width:100%;
+			    }
+			}
+			.v-label-menucaption {
+				display: block;
+				white-space: nowrap;
+				padding-top: 3px;
+			}
+		}
+	}
+	
+	.valo-menu-responsive {
+	
+		.valo-menu-title {
+			.v-caption-menucaption {
+				display: inline;
+			    line-height: 18px;
+			    padding-right: 10px;
+			    font-size: 16pt;
+			}
+		}
+	
+		.v-menubar-menuitem-useritem .v-icon {
+			font-size: 24pt;
+		}
+
+	}
+
+	
 }

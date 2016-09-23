@@ -1,6 +1,5 @@
 package org.vaadin.thomas.responsiveapptemplate;
 
-import com.vaadin.annotations.StyleSheet;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Resource;
 import com.vaadin.server.Responsive;
@@ -30,7 +29,7 @@ import com.vaadin.ui.themes.ValoTheme;
  * @author Thomas Mattsson
  *
  */
-@StyleSheet("vaadin://addons/responsiveapptemplate/styles.css")
+@SuppressWarnings("serial")
 public class ResponsiveAppTemplate extends HorizontalLayout {
 
 	private static final long serialVersionUID = -2732841564677007541L;
@@ -62,6 +61,10 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 	/* Caption component for the whole menu */
 	private final Label menuCaption;
 
+	private Component menuComponent;
+
+	private final HorizontalLayout menuTitleLayout;
+
 	/**
 	 * Constructor for creating a SideMenu component. This method sets up all
 	 * the components and styles needed for the side menu.
@@ -82,13 +85,16 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 
 		menuCaption = new Label("Menu", ContentMode.HTML);
 		menuCaption.setSizeUndefined();
-		final HorizontalLayout logoWrapper = new HorizontalLayout(menuCaption);
-		logoWrapper.setComponentAlignment(menuCaption, Alignment.MIDDLE_CENTER);
-		logoWrapper.addStyleName("valo-menu-title");
-		menuArea.addComponent(logoWrapper);
+		menuCaption.addStyleName("menucaption");
+		menuTitleLayout = new HorizontalLayout(menuCaption);
+		menuTitleLayout.setComponentAlignment(menuCaption,
+				Alignment.MIDDLE_CENTER);
+		menuTitleLayout.addStyleName("valo-menu-title");
+		menuArea.addComponent(menuTitleLayout);
 
 		userMenu.addStyleName("user-menu");
 		userItem = userMenu.addItem("", null);
+		userItem.setStyleName("useritem");
 
 		menuArea.addComponent(userMenu);
 
@@ -235,13 +241,59 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 	}
 
 	/**
-	 * Sets the title text for the menu
+	 * Sets the text for the menu title.
+	 * <p>
+	 * If a Component is set as the header with
+	 * {@link #setMenuCaption(Component)}, that component will be replaced with
+	 * the default Label.
+	 * </p>
 	 *
 	 * @param caption
 	 *            menu title
 	 */
 	public void setMenuCaption(String caption) {
+		if (!menuCaption.isAttached()) {
+			menuTitleLayout.replaceComponent(menuComponent, menuCaption);
+			menuComponent = null;
+		}
 		menuCaption.setValue(caption);
+	}
+
+	/**
+	 * Sets the icon for the menu title.
+	 * <p>
+	 * If a Component is set as the header with
+	 * {@link #setMenuCaption(Component)}, that component will be replaced with
+	 * the default Label.
+	 * </p>
+	 *
+	 * @param icon
+	 *            menu title icon
+	 */
+	public void setMenuCaptionIcon(Resource icon) {
+		if (!menuCaption.isAttached()) {
+			menuTitleLayout.replaceComponent(menuComponent, menuCaption);
+			menuComponent = null;
+		}
+		menuCaption.setIcon(icon);
+	}
+
+	/**
+	 * Replaces the default title {@link Label} with given component.
+	 * <p>
+	 * Note that user is responsible for responsive behavior of custom titles.
+	 * </p>
+	 *
+	 * @param component
+	 *            The new title bar content.
+	 */
+	public void setMenuCaption(Component component) {
+		if (menuCaption.isAttached()) {
+			menuTitleLayout.replaceComponent(menuCaption, component);
+		} else if (menuComponent.isAttached()) {
+			menuTitleLayout.replaceComponent(menuComponent, component);
+		}
+		menuComponent = component;
 	}
 
 	/**
