@@ -89,6 +89,7 @@ public class ResponsiveAppTemplate extends HorizontalLayout {
 		menuCaption.setSizeUndefined();
 		menuCaption.addStyleName("menucaption");
 		menuTitleLayout = new HorizontalLayout(menuCaption);
+		menuTitleLayout.setHeight("78px");
 		menuTitleLayout.setComponentAlignment(menuCaption,
 				Alignment.MIDDLE_CENTER);
 		menuTitleLayout.addStyleName("valo-menu-title");

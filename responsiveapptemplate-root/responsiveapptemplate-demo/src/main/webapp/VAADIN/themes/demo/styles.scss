@@ -94,6 +94,13 @@ $v-background-color: $vaadin-white;
 				}
 			}
 			
+			.user-menu {
+			
+				.v-icon {
+					margin: 0;
+				}
+			}
+			
 			.valo-menu-item {
 		
 				// align icons
@@ -109,6 +116,7 @@ $v-background-color: $vaadin-white;
 		.valo-menu-title {
 		
 			color: $valo-menu-title-text-color;
+			border-bottom: none;
 		
 			@include valo-gradient($color: $valo-menu-title-background-color);
 		
