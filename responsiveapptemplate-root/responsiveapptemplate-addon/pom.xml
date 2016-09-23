@@ -17,7 +17,6 @@
 	</parent>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- ZIP Manifest fields -->
 		<Implementation-Version>${project.version}</Implementation-Version>
@@ -75,7 +74,9 @@
 							<Vaadin-Package-Version>1</Vaadin-Package-Version>
 							<Vaadin-License-Title>${Vaadin-License-Title}</Vaadin-License-Title>
 							<Vaadin-Widgetsets>org.vaadin.thomas.responsiveapptemplate.WidgetSet</Vaadin-Widgetsets>
+							<Vaadin-Stylesheets>VAADIN/addons/responsiveapptemplate/responsiveapptemplate.scss</Vaadin-Stylesheets>
 						</manifestEntries>
+
 					</archive>
 				</configuration>
 			</plugin>
@@ -132,6 +133,9 @@
 			</resource>
 			<resource>
 				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>include</directory>
 			</resource>
 		</resources>
 

@@ -3,6 +3,7 @@ package org.vaadin.thomas.responsiveapptemplate.demo;
 import javax.servlet.annotation.WebServlet;
 
 import org.vaadin.thomas.responsiveapptemplate.ResponsiveAppTemplate;
+import org.vaadin.thomas.responsiveapptemplate.ResponsiveAppTemplate.MenuClickHandler;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
@@ -36,7 +37,7 @@ public class DemoUI extends UI {
 	}
 
 	@WebServlet(value = "/*", asyncSupported = true)
-	@VaadinServletConfiguration(productionMode = false, ui = DemoUI.class)
+	@VaadinServletConfiguration(productionMode = false, ui = DemoUI.class, widgetset = "org.vaadin.thomas.responsiveapptemplate.demo.Responsiveapptemplate_demoWidgetset")
 	public static class Servlet extends VaadinServlet {
 	}
 
@@ -57,21 +58,33 @@ public class DemoUI extends UI {
 		sideMenu.addNavigation("Foo View", FontAwesome.AMBULANCE, "Foo");
 
 		// Arbitrary method execution
-		sideMenu.addMenuItem("My Menu Entry", () -> {
-			final VerticalLayout content = new VerticalLayout();
-			content.addComponent(new Label("A layout"));
-			sideMenu.setContent(content);
+		sideMenu.addMenuItem("My Menu Entry", new MenuClickHandler() {
+			@Override
+			public void click() {
+				final VerticalLayout content = new VerticalLayout();
+				content.addComponent(new Label("A layout"));
+				sideMenu.setContent(content);
+			}
 		});
-		sideMenu.addMenuItem("Entry With Icon", FontAwesome.ANDROID, () -> {
-			final VerticalLayout content = new VerticalLayout();
-			content.addComponent(new Label("Another layout"));
-			sideMenu.setContent(content);
-		});
+		sideMenu.addMenuItem("Entry With Icon", FontAwesome.ANDROID,
+				new MenuClickHandler() {
+					@Override
+					public void click() {
+						final VerticalLayout content = new VerticalLayout();
+						content.addComponent(new Label("Another layout"));
+						sideMenu.setContent(content);
+					}
+				});
 
 		// User menu controls
-		sideMenu.addMenuItem("Show/Hide user menu", FontAwesome.USER, () -> {
-			sideMenu.setUserMenuVisible(!sideMenu.isUserMenuVisible());
-		});
+		sideMenu.addMenuItem("Show/Hide user menu", FontAwesome.USER,
+				new MenuClickHandler() {
+					@Override
+					public void click() {
+						sideMenu.setUserMenuVisible(!sideMenu
+								.isUserMenuVisible());
+					}
+				});
 
 		setUser("Guest", FontAwesome.MALE);
 	}
@@ -81,11 +94,19 @@ public class DemoUI extends UI {
 		sideMenu.setUserIcon(icon);
 
 		sideMenu.clearUserMenu();
-		sideMenu.addUserMenuItem("Settings", FontAwesome.WRENCH, () -> {
-			Notification.show("Showing settings", Type.TRAY_NOTIFICATION);
-		});
-		sideMenu.addUserMenuItem("Sign out", () -> {
-			Notification.show("Logging out..", Type.TRAY_NOTIFICATION);
+		sideMenu.addUserMenuItem("Settings", FontAwesome.WRENCH,
+				new MenuClickHandler() {
+					@Override
+					public void click() {
+						Notification.show("Showing settings",
+								Type.TRAY_NOTIFICATION);
+					}
+				});
+		sideMenu.addUserMenuItem("Sign out", new MenuClickHandler() {
+			@Override
+			public void click() {
+				Notification.show("Logging out..", Type.TRAY_NOTIFICATION);
+			}
 		});
 	}
 }

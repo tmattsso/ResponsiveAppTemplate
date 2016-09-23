@@ -1,5 +1,6 @@
 package org.vaadin.thomas.responsiveapptemplate;
 
+import com.vaadin.annotations.StyleSheet;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Resource;
 import com.vaadin.server.Responsive;
@@ -29,6 +30,7 @@ import com.vaadin.ui.themes.ValoTheme;
  * @author Thomas Mattsson
  *
  */
+@StyleSheet("vaadin://addons/responsiveapptemplate/styles.css")
 public class ResponsiveAppTemplate extends HorizontalLayout {
 
 	private static final long serialVersionUID = -2732841564677007541L;
